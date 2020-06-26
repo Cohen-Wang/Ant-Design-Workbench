@@ -10,8 +10,6 @@ Vue.config.productionTip = false;
 // 调用 ant-design框架
 Vue.use(Antd);
 
-console.log(1)
-
 new Vue({
   router,
   store,
