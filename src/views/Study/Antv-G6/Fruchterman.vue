@@ -1,5 +1,7 @@
 <template>
-    $END$
+    <div>
+        <h1>fruchterman</h1>
+    </div>
 </template>
 
 <script>

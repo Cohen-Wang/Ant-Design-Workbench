@@ -1,13 +1,80 @@
 <template>
-    $END$
+    <a-menu mode="vertical"
+            theme="dark"
+            @click="handleClick"
+            style="height: calc(100% - 64px);"
+    >
+        <!-- 只有一个元素 -->
+        <template v-for="(item, index) in currentRoute"
+                  v-if="!item.children"
+        >
+            <a-menu-item :key="item.name" titleClick="handleTitleClick">
+                <a-icon v-if="item.meta.icon"
+                        :type="item.meta.icon" />
+                {{ item.meta.title}}
+            </a-menu-item>
+        </template>
+        <!-- 多个元素 -->
+        <template v-for="(item, index) in currentRoute"
+                  v-if="item.children"
+        >
+            <a-sub-menu :key="item.name">
+                <span slot="title">
+                    <a-icon v-if="item.meta.icon"
+                            :type="item.meta.icon" />
+                    <span>{{ item.meta.title }}</span>
+                </span>
+                <!-- 子元素无孙元素 -->
+                <template v-for="(item2, index2) in item.children">
+                    <a-menu-item :key="item2.name">
+                        {{ item2.meta.title }}
+                    </a-menu-item>
+                </template>
+                <!-- 子元素有孙元素 -->
+                <!--<a-sub-menu key="sub1-2" title="Submenu">
+                    <a-menu-item key="5">
+                        Option 5
+                    </a-menu-item>
+                    <a-menu-item key="6">
+                        Option 6
+                    </a-menu-item>
+                </a-sub-menu>-->
+            </a-sub-menu>
+        </template>
+    </a-menu>
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
+
     export default {
-        name: "LayoutSidebar"
+        name: "layoutSidebar",
+        data() {
+            return {
+
+            }
+        },
+        computed: {
+            ...mapGetters([
+                'routes',
+                'currentNav',
+            ]),
+            currentRoute() {
+                return this.routes.find(item => item.name === this.currentNav).children
+            }
+        },
+        methods: {
+            handleClick(option) {
+                const { key } = option;
+                this.$router.push(key)
+            },
+        },
+        created() {
+
+        }
     }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 
 </style>

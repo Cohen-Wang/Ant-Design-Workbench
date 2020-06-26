@@ -1,5 +1,9 @@
 <template>
-    $END$
+    <div>
+        <h1>
+            force
+        </h1>
+    </div>
 </template>
 
 <script>
