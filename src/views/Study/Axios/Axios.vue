@@ -1,10 +1,10 @@
 <template>
-    $END$
+    <h1>axios</h1>
 </template>
 
 <script>
     export default {
-        name: "Home"
+        name: "Axios"
     }
 </script>
 
