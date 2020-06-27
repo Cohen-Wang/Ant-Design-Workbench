@@ -1,3 +1,5 @@
+import './Style/global.less'
+import 'animate.css'
 import Vue from 'vue'
 import Antd from 'ant-design-vue';
 import App from './App.vue'

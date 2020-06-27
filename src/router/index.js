@@ -40,6 +40,28 @@ export const routes = [
         redirect: '/axios',
         children: [
             {
+                path: '/es6',
+                name: 'es6',
+                component: () => import('@/views/Study/ES6/Index.vue'),
+                meta: {title: 'ES6', icon: 'bulb'},
+                redirect: '/async-await',
+                children: [
+                    { path: '/async-await', name: 'async-await', meta: {title: 'Async&Await'}, component: () => import('@/views/Study/ES6/Async-Await.vue') },
+                ],
+            },
+            {
+                path: '/vue',
+                name: 'vue',
+                component: () => import('@/views/Study/Vue/Index.vue'),
+                meta: {title: 'VUE', icon: 'smile'},
+                redirect: '/router',
+                children: [
+                    { path: '/watch', name: 'watch', meta: {title: '侦听属性(watch)'}, component: () => import('@/views/Study/Vue/Watch.vue') },
+                    { path: '/router', name: 'router', meta: {title: '路由(router)'}, component: () => import('@/views/Study/Vue/Router.vue') },
+                    { path: '/transition', name: 'transition', meta: {title: '过渡(transition)'}, component: () => import('@/views/Study/Vue/Transition.vue') },
+                ],
+            },
+            {
                 path: '/axios',
                 name: 'axios',
                 meta: {title: 'axios', icon: 'credit-card'},
@@ -52,35 +74,11 @@ export const routes = [
                 meta: {title: '蚂蚁数据可视化(Antv-G6)', icon: 'dot-chart'},
                 redirect: '/fruchterman',
                 children: [
-                    {
-                        path: '/fruchterman',
-                        name: 'fruchterman',
-                        meta: {title: '图布局'},
-                        component: () => import('@/views/Study/Antv-G6/Fruchterman.vue')
-                    },
-                    {
-                        path: '/force',
-                        name: 'force',
-                        meta: {title: '力导向图布局'},
-                        component: () => import('@/views/Study/Antv-G6/Force.vue')
-                    },
+                    { path: '/fruchterman', name: 'fruchterman', meta: {title: '图布局'}, component: () => import('@/views/Study/Antv-G6/Fruchterman.vue') },
+                    { path: '/force', name: 'force', meta: {title: '力导向图布局'}, component: () => import('@/views/Study/Antv-G6/Force.vue') },
                 ],
             },
-            {
-                path: '/vue',
-                name: 'vue',
-                component: () => import('@/views/Study/Vue/Index.vue'),
-                meta: {title: 'VUE', icon: 'smile'},
-                redirect: '/router',
-                children: [
-                    {
-                        path: '/router',
-                        name: 'router',
-                        meta: {title: '路由'},
-                        component: () => import('@/views/Study/Vue/Router.vue')
-                    },
-                ],
-            }
+
         ]
     },
     {
