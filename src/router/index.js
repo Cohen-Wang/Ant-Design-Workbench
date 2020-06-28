@@ -37,48 +37,67 @@ export const routes = [
         component: Index,
         isShow: true,
         meta: {title: '学习', icon: 'credit-card'},
-        redirect: '/axios',
+        redirect: '/study/axios',
         children: [
             {
-                path: '/es6',
-                name: 'es6',
-                component: () => import('@/views/Study/ES6/Index.vue'),
-                meta: {title: 'ES6', icon: 'bulb'},
-                redirect: '/async-await',
-                children: [
-                    { path: '/async-await', name: 'async-await', meta: {title: 'Async&Await'}, component: () => import('@/views/Study/ES6/Async-Await.vue') },
-                ],
-            },
-            {
-                path: '/vue',
-                name: 'vue',
-                component: () => import('@/views/Study/Vue/Index.vue'),
-                meta: {title: 'VUE', icon: 'smile'},
-                redirect: '/router',
-                children: [
-                    { path: '/watch', name: 'watch', meta: {title: '侦听属性(watch)'}, component: () => import('@/views/Study/Vue/Watch.vue') },
-                    { path: '/router', name: 'router', meta: {title: '路由(router)'}, component: () => import('@/views/Study/Vue/Router.vue') },
-                    { path: '/transition', name: 'transition', meta: {title: '过渡(transition)'}, component: () => import('@/views/Study/Vue/Transition.vue') },
-                ],
-            },
-            {
-                path: '/axios',
+                path: '/study/axios',
                 name: 'axios',
                 meta: {title: 'axios', icon: 'credit-card'},
                 component: () => import('@/views/Study/Axios/Axios.vue')
             },
             {
-                path: '/antv-g6',
+                path: '/study/css',
+                name: 'css',
+                component: () => import('@/views/Study/CSS/Index.vue'),
+                meta: {title: 'CSS', icon: 'bulb'},
+                redirect: '/study/css/flex',
+                children: [
+                    { path: '/study/css/flex', name: 'flex', meta: {title: 'flex'}, component: () => import('@/views/Study/CSS/Flex.vue') },
+                ],
+            },
+            {
+                path: '/study/es6',
+                name: 'es6',
+                component: () => import('@/views/Study/ES6/Index.vue'),
+                meta: {title: 'ES6', icon: 'bulb'},
+                redirect: '/study/es6/async-await',
+                children: [
+                    { path: '/study/es6/async-await', name: 'async-await', meta: {title: 'Async&Await'}, component: () => import('@/views/Study/ES6/Async-Await.vue') },
+                ],
+            },
+            {
+                path: '/study/vue',
+                name: 'vue',
+                component: () => import('@/views/Study/Vue/Index.vue'),
+                meta: {title: 'VUE', icon: 'smile'},
+                redirect: '/study/vue/watch',
+                children: [
+                    { path: '/study/vue/watch', name: 'watch', meta: {title: '侦听属性(watch)'}, component: () => import('@/views/Study/Vue/Watch.vue') },
+                    { path: '/study/vue/router', name: 'router', meta: {title: '路由(router)'}, component: () => import('@/views/Study/Vue/Router.vue'), beforeEnter: (to, from, next) => { console.log(to, from, next); alert('路由的拦截器')} },
+                    { path: '/study/vue/transition', name: 'transition', meta: {title: '过渡(transition)'}, component: () => import('@/views/Study/Vue/Transition.vue') },
+                ],
+            },
+            {
+                path: '/study/antv-g6',
                 name: 'antv-g6',
                 component: () => import('@/views/Study/Antv-G6/Index.vue'),
                 meta: {title: '蚂蚁数据可视化(Antv-G6)', icon: 'dot-chart'},
-                redirect: '/fruchterman',
+                redirect: '/study/antv-g6/fruchterman',
                 children: [
-                    { path: '/fruchterman', name: 'fruchterman', meta: {title: '图布局'}, component: () => import('@/views/Study/Antv-G6/Fruchterman.vue') },
-                    { path: '/force', name: 'force', meta: {title: '力导向图布局'}, component: () => import('@/views/Study/Antv-G6/Force.vue') },
+                    { path: '/study/antv-g6/fruchterman', name: 'fruchterman', meta: {title: '图布局'}, component: () => import('@/views/Study/Antv-G6/Fruchterman.vue') },
+                    { path: '/study/antv-g6/force', name: 'force', meta: {title: '力导向图布局'}, component: () => import('@/views/Study/Antv-G6/Force.vue') },
                 ],
             },
-
+            {
+                path: '/study/echarts',
+                name: 'echarts',
+                component: () => import('@/views/Study/Antv-G6/Index.vue'),
+                meta: {title: 'ECharts', icon: 'dot-chart'},
+                redirect: '/study/echarts/category',
+                children: [
+                    { path: '/study/echarts/category', name: 'category', meta: {title: '图布局'}, component: () => import('@/views/Study/ECharts/Category.vue') },
+                ]
+            },
         ]
     },
     {
@@ -92,31 +111,30 @@ export const routes = [
             {
                 path: '/axios',
                 name: 'axios',
-                meta: {
-                    title: 'axios',
-                    icon: 'credit-card',
-                },
+                meta: { title: 'axios', icon: 'credit-card' },
                 component: () => import('@/views/Study/Axios/Axios.vue')
             }
         ]
     },
-    {
-        path: '/404',
-        name: '404',
-        isShow: false,
-        component: () => import('@/views/404.vue')
-    },
-    {
-        path: '/*',
-        redirect: '/404'
-    },
+    // {
+    //     path: '/404',
+    //     name: '404',
+    //     isShow: false,
+    //     component: () => import('@/views/404.vue')
+    // },
+    // // 一定要放在最后一个，因为路由匹配是按顺序匹配的，只有当匹配了所有的都找不到才说明是不存在的页面
+    // {
+    //     path: '/*',
+    //     redirect: '/404'
+    // },
 ]
 
 const router = new VueRouter({
-  routes
+    routes,
+    //路由的使用模式   #/home(hash)   /home(h5 history)
+    mode: 'history',
+    //进行路由模块划分
+    modules: {}
 })
-
-
-
 
 export default router

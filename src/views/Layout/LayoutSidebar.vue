@@ -8,7 +8,7 @@
         <template v-for="(item, index) in currentRoute"
                   v-if="!item.children"
         >
-            <a-menu-item :key="item.name" titleClick="handleTitleClick">
+            <a-menu-item :key="item.path" titleClick="handleTitleClick">
                 <a-icon v-if="item.meta.icon"
                         :type="item.meta.icon" />
                 {{ item.meta.title}}
@@ -26,7 +26,7 @@
                 </span>
                 <!-- 子元素无孙元素 -->
                 <template v-for="(item2, index2) in item.children">
-                    <a-menu-item :key="item2.name">
+                    <a-menu-item :key="item2.path">
                         {{ item2.meta.title }}
                     </a-menu-item>
                 </template>
