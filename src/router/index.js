@@ -58,12 +58,23 @@ export const routes = [
                 ],
             },
             {
+                path: '/study/javascript',
+                name: 'javascript',
+                component: () => import('@/views/Study/Javascript/Index.vue'),
+                meta: {title: 'Javascript', icon: 'bulb'},
+                redirect: '/study/javascript/console',
+                children: [
+                    { path: '/study/javascript/console', name: 'console', meta: {title: 'console'}, component: () => import('@/views/Study/Javascript/Console.vue') },
+                ],
+            },
+            {
                 path: '/study/es6',
                 name: 'es6',
                 component: () => import('@/views/Study/ES6/Index.vue'),
                 meta: {title: 'ES6', icon: 'bulb'},
                 redirect: '/study/es6/async-await',
                 children: [
+                    { path: '/study/es6/symbol', name: 'symbol', meta: {title: 'symbol'}, component: () => import('@/views/Study/ES6/Symbol.vue') },
                     { path: '/study/es6/async-await', name: 'async-await', meta: {title: 'Async&Await'}, component: () => import('@/views/Study/ES6/Async-Await.vue') },
                 ],
             },
