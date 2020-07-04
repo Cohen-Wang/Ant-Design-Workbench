@@ -596,10 +596,6 @@
 
         .case-2-left {
             flex: 1;
-
-            /deep/ .ant-input, .placeholder-input {
-                color: #5bc0de;
-            }
         }
 
         .case-2-right {
