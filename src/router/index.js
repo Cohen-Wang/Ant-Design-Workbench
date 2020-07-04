@@ -90,6 +90,7 @@ export const routes = [
                     { path: '/study/vue/slot', name: 'watch', meta: {title: '插槽(slot)'}, component: () => import('@/views/Study/Vue/MySlot.vue') },
                     { path: '/study/vue/router', name: 'router', meta: {title: '路由(router)'}, component: () => import('@/views/Study/Vue/Router.vue'), beforeEnter: (to, from, next) => { console.log(to, from, next); alert('路由的拦截器'); next()} },
                     { path: '/study/vue/transition', name: 'transition', meta: {title: '过渡(transition)'}, component: () => import('@/views/Study/Vue/Transition.vue') },
+                    { path: '/study/vue/mixins', name: 'mixins', meta: {title: '混入(mixins)'}, component: () => import('@/views/Study/Vue/Mixins.vue') },
                 ],
             },
             {
