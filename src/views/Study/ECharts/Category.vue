@@ -1,5 +1,12 @@
 <template>
-    <div id="pox" style="height: 400px;"></div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">category</div>
+        </div>
+        <div class="panel-body panel-body-box">
+            <div id="pox" style="height: 400px;"></div>
+        </div>
+    </div>
 </template>
 
 <script>

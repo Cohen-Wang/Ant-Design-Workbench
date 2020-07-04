@@ -1,17 +1,17 @@
 <template>
-    <div class="index">
+    <div class="flex">
         <!-- 左侧 -->
-        <div class="left">
+        <div class="w-240">
             <div class="logo">
                 <a @click="$router.push('/')">
                     <img src="@/assets/image/logo.png" alt="">
                 </a>
             </div>
             <!-- sidebar -->
-            <LayoutSidebar class="sidebar" />
+            <layout-sidebar/>
         </div>
         <!-- 右侧 -->
-        <div class="right">
+        <div class="flex-1 bg-orange">
             <LayoutContent>
                 <NavHeader slot="top"></NavHeader>
                 <router-view slot="content"></router-view>
@@ -39,33 +39,11 @@
 </script>
 
 <style lang="less" scoped>
-    .index {
-        width: 100%;
-        height: 100%;
-        display: flex;
-
-        .left {
-            min-width: 200px;
-            max-width: 350px;
-            width: 350px;
-            height: 100%;
-
-            .logo {
-                /*background: url("../../assets/image/logo.png") center center no-repeat #001529;*/
-                background-color:  #001529;
-                height: 64px;
-                text-align: center;
-                line-height: 64px;
-            }
-
-            .sidebar {
-                height: calc(100% - 64px);
-            }
-        }
-
-        .right {
-            width: 100%;
-            height: 100%;
-        }
+    .logo {
+        /*background: url("../../assets/image/logo.png") center center no-repeat #001529;*/
+        background-color:  #001529;
+        height: 64px;
+        line-height: 64px;
+        text-align: center;
     }
 </style>

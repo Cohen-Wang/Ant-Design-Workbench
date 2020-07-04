@@ -1,16 +1,13 @@
 <template>
-    <div class="home">
-        <a-empty
-                image="https://gw.alipayobjects.com/mdn/miniapp_social/afts/img/A*pevERLJC9v0AAAAAAAAAAABjAQAAAQ/original"
-                :image-style="{
-      height: '60px',
-    }"
-        >
-            <span slot="description"> Customize <a href="#API">Description</a> </span>
-            <a-button type="primary">
-                Create Now
-            </a-button>
-        </a-empty>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">
+                首页
+            </div>
+        </div>
+        <div class="panel-body panel-body-box">
+            <a-calendar/>
+        </div>
     </div>
 </template>
 

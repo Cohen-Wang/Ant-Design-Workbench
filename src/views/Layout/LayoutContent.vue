@@ -1,5 +1,5 @@
 <template>
-    <a-layout class="layout">
+    <a-layout>
         <!-- navbar -->
         <a-layout-header style="padding: 0;">
             <slot name="top"></slot>
@@ -67,29 +67,21 @@
 </script>
 
 <style lang="less" scoped>
-    .layout {
-        width: 100%;
-        height: 100%;
+    .content {
+        height: calc(100vh - 64px);
+        background-color: #dce0e6;
+        padding: 10px;
 
-        .content {
-            height: calc(100% - 64px);
-            background-color: #dce0e6;
-            padding-left: 10px;
-            padding-top: 10px;
-            padding-right: 10px;
+        .breadcrumb {
+            height: 21px;
+            background-color: #ffffff;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            padding: 0 10px;
+        }
 
-            .breadcrumb {
-                height: 21px;
-                background-color: #ffffff;
-                margin-bottom: 10px;
-                padding-left: 10px;
-            }
-
-            .view {
-                height: calc(100% - 40px);
-                background-color: #ffffff;
-                overflow: hidden;
-            }
+        .view {
+            height: calc(100vh - 106px);
         }
     }
 </style>

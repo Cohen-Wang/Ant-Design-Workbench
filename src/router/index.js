@@ -53,6 +53,8 @@ export const routes = [
                 redirect: '/study/css/flex',
                 children: [
                     { path: '/study/css/flex', name: 'flex', meta: {title: 'flex'}, component: () => import('@/views/Study/CSS/Flex.vue') },
+                    { path: '/study/css/deep', name: 'deep', meta: {title: 'deep'}, component: () => import('@/views/Study/CSS/Deep.vue') },
+                    { path: '/study/css/textOverflow', name: 'textOverflow', meta: {title: 'textOverflow'}, component: () => import('@/views/Study/CSS/TextOverflow.vue') },
                 ],
             },
             {
@@ -73,8 +75,18 @@ export const routes = [
                 redirect: '/study/vue/watch',
                 children: [
                     { path: '/study/vue/watch', name: 'watch', meta: {title: '侦听属性(watch)'}, component: () => import('@/views/Study/Vue/Watch.vue') },
-                    { path: '/study/vue/router', name: 'router', meta: {title: '路由(router)'}, component: () => import('@/views/Study/Vue/Router.vue'), beforeEnter: (to, from, next) => { console.log(to, from, next); alert('路由的拦截器')} },
+                    { path: '/study/vue/router', name: 'router', meta: {title: '路由(router)'}, component: () => import('@/views/Study/Vue/Router.vue'), beforeEnter: (to, from, next) => { console.log(to, from, next); alert('路由的拦截器'); next()} },
                     { path: '/study/vue/transition', name: 'transition', meta: {title: '过渡(transition)'}, component: () => import('@/views/Study/Vue/Transition.vue') },
+                ],
+            },
+            {
+                path: '/study/library',
+                name: 'library',
+                component: () => import('@/views/Study/Library/Index.vue'),
+                meta: {title: '常用工具库', icon: 'smile'},
+                redirect: '/study/library/moment',
+                children: [
+                    { path: '/study/library/moment', name: 'moment', meta: {title: 'moment.js'}, component: () => import('@/views/Study/Library/Moment.vue') },
                 ],
             },
             {
@@ -98,6 +110,17 @@ export const routes = [
                     { path: '/study/echarts/category', name: 'category', meta: {title: '图布局'}, component: () => import('@/views/Study/ECharts/Category.vue') },
                 ]
             },
+            {
+                path: '/study/ant-design',
+                name: 'ant-design',
+                component: () => import('@/views/Study/Ant-Design/Index.vue'),
+                meta: {title: 'Ant-Design', icon: 'dot-chart'},
+                redirect: '/study/ant-design/table',
+                children: [
+                    { path: '/study/ant-design/table', name: 'table', meta: {title: 'Table(表格)'}, component: () => import('@/views/Study/Ant-Design/Table.vue') },
+                    { path: '/study/ant-design/datePicker', name: 'datePicker', meta: {title: 'DatePicker(日期选择器)'}, component: () => import('@/views/Study/Ant-Design/DatePicker.vue') },
+                ]
+            },
         ]
     },
     {
@@ -116,25 +139,24 @@ export const routes = [
             }
         ]
     },
-    // {
-    //     path: '/404',
-    //     name: '404',
-    //     isShow: false,
-    //     component: () => import('@/views/404.vue')
-    // },
-    // // 一定要放在最后一个，因为路由匹配是按顺序匹配的，只有当匹配了所有的都找不到才说明是不存在的页面
-    // {
-    //     path: '/*',
-    //     redirect: '/404'
-    // },
+    {
+        path: '/404',
+        name: '404',
+        isShow: false,
+        component: () => import('@/views/404.vue')
+    },
+    // 一定要放在最后一个，因为路由匹配是按顺序匹配的，只有当匹配了所有的都找不到才说明是不存在的页面
+    {
+        path: '/*',
+        redirect: '/404'
+    },
 ]
 
 const router = new VueRouter({
-    routes,
-    //路由的使用模式   #/home(hash)   /home(h5 history)
-    mode: 'history',
-    //进行路由模块划分
-    modules: {}
+    routes,// 配置
+    base: '/workbench/', // 应用的基路径。例如，如果整个单页应用服务在 /app/ 下，然后 base 就应该设为 "/app/"。默认值: "/"
+    mode: 'history', //路由的使用模式   #/home(hash)   /home(h5 history)
+    modules: {} //进行路由模块划分
 })
 
 export default router

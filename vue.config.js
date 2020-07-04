@@ -30,12 +30,12 @@ module.exports = {
     configureWebpack: () => {},
     chainWebpack: () => {},
     // css相关配置
-    css: {
-        modules: false,// 启用 css modules
-        extract: true,// 是否使用css分离插件
-        sourceMap: false,// 开启 css source maps?
-        loaderOptions: {},// css 预设器配置项
-    },
+    // css: {
+    //     modules: false,// 启用 css modules
+    //     extract: true,// 是否使用css分离插件
+    //     sourceMap: false,// 开启 css source maps?
+    //     loaderOptions: {},// css 预设器配置项
+    // },
     // 第三方插件
     pluginOptions: {
         // ...

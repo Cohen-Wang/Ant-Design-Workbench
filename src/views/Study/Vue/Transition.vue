@@ -1,35 +1,40 @@
 <template>
-    <div class="container">
-        <a-button type="primary" @click="handleClick">点击</a-button>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">transition</div>
+        </div>
+        <div class="panel-body panel-body-box">
+            <a-button type="primary" @click="handleClick">点击</a-button>
 
-        <div class="flex">
-            <!-- 无过渡效果 -->
-            <div v-if="isShow" class="box">无过渡效果</div>
-            <!-- 有过渡效果 -->
-            <transition name="fade"
-                        appear
-                        :duration="1000"
-                        enter-active-class="animated fadeInDown"
-                        leave-active-class="animated bounceOutRight"
-                        @before-enter="beforeEnter"
-                        @enter="enter"
-                        @after-enter="afterEnter"
-                        @enter-cancelled="enterCancelled"
-                        @before-leave="beforeLeave"
-                        @leave="leave"
-                        @after-leave="afterLeave"
-                        @leave-cancelled="leaveCancelled"
-            >
-                <div v-if="isShow" class="box">有过渡效果1</div>
-            </transition>
+            <div class="flex">
+                <!-- 无过渡效果 -->
+                <div v-if="isShow" class="box">无过渡效果</div>
+                <!-- 有过渡效果 -->
+                <transition name="fade"
+                            appear
+                            :duration="1000"
+                            enter-active-class="animated fadeInDown"
+                            leave-active-class="animated bounceOutRight"
+                            @before-enter="beforeEnter"
+                            @enter="enter"
+                            @after-enter="afterEnter"
+                            @enter-cancelled="enterCancelled"
+                            @before-leave="beforeLeave"
+                            @leave="leave"
+                            @after-leave="afterLeave"
+                            @leave-cancelled="leaveCancelled"
+                >
+                    <div v-if="isShow" class="box">有过渡效果1</div>
+                </transition>
 
-            <!--<transition name="fadeIn" duration="3000">
-                <div v-if="isShow" class="box">有过渡效果2</div>
-            </transition>
+                <!--<transition name="fadeIn" duration="3000">
+                    <div v-if="isShow" class="box">有过渡效果2</div>
+                </transition>
 
-            <transition name="fadeIn" :duration="{ enter: 1000, leave: 2000 }">
-                <div v-if="isShow" class="box">有过渡效果3</div>
-            </transition>-->
+                <transition name="fadeIn" :duration="{ enter: 1000, leave: 2000 }">
+                    <div v-if="isShow" class="box">有过渡效果3</div>
+                </transition>-->
+            </div>
         </div>
     </div>
 </template>
@@ -94,18 +99,11 @@
 </script>
 
 <style lang="less" scoped>
-    .container {
-        padding: 10px;
-
-        .box {
-            width: 200px;
-            height: 200px;
-            background-color: #FF456E;
-            margin-right: 10px;
-        }
+    .box {
+        width: 200px;
+        height: 200px;
+        background-color: #FF456E;
+        margin-right: 10px;
     }
 
-    .flex {
-        display: flex;
-    }
 </style>

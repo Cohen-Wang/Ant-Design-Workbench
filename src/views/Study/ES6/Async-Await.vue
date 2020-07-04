@@ -1,16 +1,21 @@
 <template>
-    <div class="container">
-        <a-form :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
-            <p>
-                <span>price:</span>
-                <span>{{ price }}</span>
-            </p>
-            <a-button type="primary"
-                      @click="getPrice"
-                      :loading="btnLoading">
-                获取
-            </a-button>
-        </a-form>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">Async-Await</div>
+        </div>
+        <div class="panel-body panel-body-box">
+            <a-form :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
+                <p>
+                    <span>price:</span>
+                    <span>{{ price }}</span>
+                </p>
+                <a-button type="primary"
+                          @click="getPrice"
+                          :loading="btnLoading">
+                    获取
+                </a-button>
+            </a-form>
+        </div>
     </div>
 </template>
 
@@ -44,9 +49,5 @@
 </script>
 
 <style lang="less" scoped>
-    .container {
-        padding: 10px;
 
-
-    }
 </style>

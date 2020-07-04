@@ -1,9 +1,8 @@
 <template>
     <a-menu mode="vertical"
             theme="dark"
-            @click="handleClick"
-            style="height: calc(100% - 64px);"
-    >
+            class="layout-sidebar"
+            @click="handleClick">
         <!-- 只有一个元素 -->
         <template v-for="(item, index) in currentRoute"
                   v-if="!item.children"
@@ -76,5 +75,8 @@
 </script>
 
 <style lang="less" scoped>
-
+    .layout-sidebar {
+        height: calc(100vh - 64px);
+        overflow-y: auto;
+    }
 </style>

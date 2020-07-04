@@ -1,66 +1,69 @@
 <template>
-    <div class="container">
-        <a-row :gutter="14">
-            <!-- 案例一 -->
-            <a-col :span="8">
-                <div class="col-box">
-                    <h3 class="title">基础</h3>
-                    <p class="des">暂无描述</p>
-                    <a-form :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
-                        <a-form-item label="firstName1">
-                            <a-input v-model="firstName1"/>
-                        </a-form-item>
-                        <a-form-item label="lastName">
-                            <a-input v-model="lastName" disabled/>
-                        </a-form-item>
-                        <a-form-item label="fullName1">
-                            <a-input v-model="fullName1" disabled/>
-                        </a-form-item>
-                    </a-form>
-                </div>
-            </a-col>
-            <!-- 案例二 -->
-            <a-col :span="8">
-                <div class="col-box">
-                    <h3 class="title">对象</h3>
-                    <p class="des">如果watch监测的是一个对象的话，直接使用watch是不行的，此时我们可以借助于computed计算属性来完成。</p>
-                    <a-form :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
-                        <a-form-item label="a.firstName">
-                            <a-input v-model="a.firstName"/>
-                        </a-form-item>
-                        <a-form-item label="firstName2">
-                            <a-input v-model="firstName2" disabled/>
-                        </a-form-item>
-                        <a-form-item label="lastName">
-                            <a-input v-model="lastName" disabled/>
-                        </a-form-item>
-                        <a-form-item label="fullName1">
-                            <a-input v-model="fullName2" disabled/>
-                        </a-form-item>
-                    </a-form>
-                </div>
-            </a-col>
-            <!-- 案例三 -->
-            <a-col :span="8">
-                <div class="col-box">
-                    <p class="title">深度监听</p>
-                    <a-form :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
-                        <a-form-item label="property">
-                            <a-input v-model="property"/>
-                        </a-form-item>
-                        <a-form-item label="value">
-                            <a-input v-model="value"/>
-                        </a-form-item>
-                        <a-form-item label="">
-                            <a-button type="primary" @click="handleClick">点击</a-button>
-                        </a-form-item>
-                        <pre style="background-color: #eee;">
-                            {{ children }}
-                        </pre>
-                    </a-form>
-                </div>
-            </a-col>
-        </a-row>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">watch</div>
+        </div>
+        <div class="panel-body panel-body-box">
+            <a-row :gutter="14">
+                <!-- 案例一 -->
+                <a-col :span="8">
+                    <div class="col-box">
+                        <h3 class="title">基础</h3>
+                        <p class="des">暂无描述</p>
+                        <a-form :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
+                            <a-form-item label="firstName1">
+                                <a-input v-model="firstName1"/>
+                            </a-form-item>
+                            <a-form-item label="lastName">
+                                <a-input v-model="lastName" disabled/>
+                            </a-form-item>
+                            <a-form-item label="fullName1">
+                                <a-input v-model="fullName1" disabled/>
+                            </a-form-item>
+                        </a-form>
+                    </div>
+                </a-col>
+                <!-- 案例二 -->
+                <a-col :span="8">
+                    <div class="col-box">
+                        <h3 class="title">对象</h3>
+                        <p class="des">如果watch监测的是一个对象的话，直接使用watch是不行的，此时我们可以借助于computed计算属性来完成。</p>
+                        <a-form :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
+                            <a-form-item label="a.firstName">
+                                <a-input v-model="a.firstName"/>
+                            </a-form-item>
+                            <a-form-item label="firstName2">
+                                <a-input v-model="firstName2" disabled/>
+                            </a-form-item>
+                            <a-form-item label="lastName">
+                                <a-input v-model="lastName" disabled/>
+                            </a-form-item>
+                            <a-form-item label="fullName1">
+                                <a-input v-model="fullName2" disabled/>
+                            </a-form-item>
+                        </a-form>
+                    </div>
+                </a-col>
+                <!-- 案例三 -->
+                <a-col :span="8">
+                    <div class="col-box">
+                        <p class="title">深度监听</p>
+                        <a-form :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
+                            <a-form-item label="property">
+                                <a-input v-model="property"/>
+                            </a-form-item>
+                            <a-form-item label="value">
+                                <a-input v-model="value"/>
+                            </a-form-item>
+                            <a-form-item label="">
+                                <a-button type="primary" @click="handleClick">点击</a-button>
+                            </a-form-item>
+                            <pre class="well" v-text="children"></pre>
+                        </a-form>
+                    </div>
+                </a-col>
+            </a-row>
+        </div>
     </div>
 </template>
 
@@ -131,26 +134,22 @@
 </script>
 
 <style lang="less" scoped>
-    .container {
-        padding: 10px;
+    .col-box {
+        box-sizing: border-box;
+        border: 2px solid #eee;
+        padding-top: 14px;
+        padding-left: 6px;
+        padding-right: 6px;
 
-        .col-box {
-            box-sizing: border-box;
-            border: 2px solid #eee;
-            padding-top: 14px;
-            padding-left: 6px;
-            padding-right: 6px;
+        .title {
+            text-align: center;
+            font: 900 26px/1 "微软雅黑";
+            color: cornflowerblue;
+        }
 
-            .title {
-                text-align: center;
-                font: 900 26px/1 "微软雅黑";
-                color: cornflowerblue;
-            }
-
-            .des {
-                font: 900 12px/1 "微软雅黑";
-                color: #001529;
-            }
+        .des {
+            font: 900 12px/1 "微软雅黑";
+            color: #001529;
         }
     }
 </style>
