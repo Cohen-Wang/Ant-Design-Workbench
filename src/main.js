@@ -6,11 +6,18 @@ import App from './App.vue'
 import 'ant-design-vue/dist/antd.css';
 import router from './router'
 import store from './store'
+import axios from 'axios'
 
 Vue.config.productionTip = false;
 
 // 调用 ant-design框架
 Vue.use(Antd);
+
+/**
+ * axios并没有install 方法，所以是不能使用vue.use()方法的。
+ * 引入axios，并加到原型链中
+ */
+Vue.prototype.$axios = axios;
 
 new Vue({
   router,
