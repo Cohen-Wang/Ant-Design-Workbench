@@ -44,6 +44,7 @@
 
             <p class="lead">6. <code>format</code>日期格式化</p>
             <p><kbd>moment().format()</kbd> <samp>// {{ moment().format() }} </samp></p>
+            <p><kbd>moment().format('YYYY年MM月DD日 HH时mm分ss秒')</kbd> <samp>// {{ moment().format('YYYY年MM月DD日 HH时mm分ss秒') }} </samp></p>
             <p><kbd>moment().format("YYYY-MM-DD HH:mm:ss")</kbd> <samp>// {{ moment().format("YYYY-MM-DD HH:mm:ss") }} </samp></p>
             <p><kbd>moment().format("YYYY-MM-DD hh:mm:ss")</kbd> <samp>// {{ moment().format("YYYY-MM-DD hh:mm:ss") }} // 注意：H一定要大写！ 写成hh:mm:ss时，15:00会改写成3:00</samp></p>
             <p><kbd>moment().format("YYYY-MM-DD")</kbd> <samp>// {{ moment().format("YYYY-MM-DD") }}</samp></p>
@@ -107,6 +108,21 @@
             <p><kbd>moment.unix(1318781876)</kbd> <samp>// {{ moment.unix(1318781876) }}</samp></p>
             <hr>
 
+            <p class="lead">*.时间戳</p>
+            <p><kbd>moment(1234567891234).format('YYYY-MM-DD HH:mm:ss')</kbd> <samp>// {{ moment(1234567891234).format('YYYY-MM-DD HH:mm:ss') }}</samp></p>
+            <hr>
+
+            <p class="lead">*.最近几天</p>
+            <p><kbd>[moment().add(-7, 'day').format('YYYY-MM-DD '), moment().format('YYYY-MM-DD ')]</kbd> <samp>// {{ [moment().add(-7, 'day').format('YYYY-MM-DD '), moment().format('YYYY-MM-DD ')] }}</samp></p>
+            <p><kbd>[moment().add(-14, 'day').format('YYYY-MM-DD '), moment().format('YYYY-MM-DD ')]</kbd> <samp>// {{ [moment().add(-14, 'day').format('YYYY-MM-DD '), moment().format('YYYY-MM-DD ')] }}</samp></p>
+            <p><kbd>[moment().add(-30, 'day').format('YYYY-MM-DD '), moment().format('YYYY-MM-DD ')]</kbd> <samp>// {{ [moment().add(-30, 'day').format('YYYY-MM-DD '), moment().format('YYYY-MM-DD ')] }}</samp></p>
+            <hr>
+
+            <p class="lead">*.Number</p>
+            <p><kbd>typeof(moment().format('MM'))</kbd> <samp>// {{ typeof(moment().format('MM')) }}</samp></p>
+            <p><kbd>typeof(moment().format('MM') - 1)</kbd> <samp>// {{ typeof(moment().format('MM') - 1) }}</samp></p>
+            <p><kbd>Number(moment().format('MM') - 1)</kbd> <samp>// {{ Number(moment().format('MM') - 1) }}</samp></p>
+            <hr>
 
             <blockquote>实战</blockquote>
             <a-button type="link" @click="$router.push('/study/ant-design/datePicker')">Ant Design - DatePicker</a-button>
@@ -117,6 +133,7 @@
 
 <script>
     import moment from 'moment'
+    import 'moment/locale/zh-cn'
 
     export default {
         name: "Moment",
