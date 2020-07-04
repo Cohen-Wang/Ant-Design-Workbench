@@ -75,6 +75,7 @@ export const routes = [
                 redirect: '/study/es6/async-await',
                 children: [
                     { path: '/study/es6/symbol', name: 'symbol', meta: {title: 'symbol'}, component: () => import('@/views/Study/ES6/Symbol.vue') },
+                    { path: '/study/es6/null-propagation-operator', name: 'null-propagation-operator', meta: {title: 'Null传导运算符'}, component: () => import('@/views/Study/ES6/NullOperator.vue') },
                     { path: '/study/es6/async-await', name: 'async-await', meta: {title: 'Async&Await'}, component: () => import('@/views/Study/ES6/Async-Await.vue') },
                 ],
             },
