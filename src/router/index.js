@@ -85,13 +85,15 @@ export const routes = [
                 name: 'vue',
                 component: () => import('@/views/Study/Vue/Index.vue'),
                 meta: {title: 'VUE', icon: 'smile'},
-                redirect: '/study/vue/watch',
+                redirect: '/study/vue/property',
                 children: [
+                    { path: '/study/vue/property', name: 'property', meta: {title: 'Vue属性'}, component: () => import('@/views/Study/Vue/Property.vue') },
                     { path: '/study/vue/watch', name: 'watch', meta: {title: '侦听属性(watch)'}, component: () => import('@/views/Study/Vue/Watch.vue') },
                     { path: '/study/vue/slot', name: 'watch', meta: {title: '插槽(slot)'}, component: () => import('@/views/Study/Vue/MySlot.vue') },
                     { path: '/study/vue/router', name: 'router', meta: {title: '路由(router)'}, component: () => import('@/views/Study/Vue/Router.vue'), beforeEnter: (to, from, next) => { console.log(to, from, next); alert('路由的拦截器'); next()} },
                     { path: '/study/vue/transition', name: 'transition', meta: {title: '过渡(transition)'}, component: () => import('@/views/Study/Vue/Transition.vue') },
                     { path: '/study/vue/mixins', name: 'mixins', meta: {title: '混入(mixins)'}, component: () => import('@/views/Study/Vue/Mixins.vue') },
+                    { path: '/study/vue/forceUpdate', name: 'forceUpdate', meta: {title: 'forceUpdate'}, component: () => import('@/views/Study/Vue/$forceUpdate.vue') },
                 ],
             },
             {
