@@ -1,19 +1,18 @@
 <template>
     <div class="container">
-        <div ref="canvas"></div>
+        <div class="canvas" ref="canvas"></div>
     </div>
 </template>
 
 <script>
     import G6 from '@antv/g6'
-    import data from './FruchtermanData.json'
-    import moment from "moment";
+    import data from './data';
 
     export default {
         name: "Fruchterman",
         data() {
             return {
-                data,
+                data: data,
                 // 配置
                 defaultConf: {
                     nodeStateStyles: {
@@ -92,19 +91,15 @@
                 this.defaultConf.defaultEdge.labelCfg.style.fill = edgeLabelColor
                 this.defaultConf.defaultNode.labelCfg.style.fill = edgeLabelColor
 
-                // const loading = this.$loading({
-                //     fullscreen: true,
-                //     lock: true,
-                //     text: '数据请求中',
-                //     spinner: 'el-icon-loading',
-                //     background: 'rgba(0, 0, 0, 0.7)'
-                // })
+                console.log(this.data)
 
+                // const nodes = this.optimizeNodes(this.data.nodes)
+                // const edges = this.optimizeEdges(this.data.edges)
+                // const simplifyEdges = this.optimizeEdges(this.data.simplifyEdges)
 
-                // this.graphCreationTime = result.explorerCache ? moment().subtract(1, 'days').format('YYYY-MM-DD') : moment().format('YYYY-MM-DD HH:mm')
-                const nodes = this.optimizeNodes(this.data.nodes)
-                const edges = this.optimizeEdges(this.data.edges)
-                const simplifyEdges = this.optimizeEdges(this.data.simplifyEdges)
+                const nodes = this.data.nodes
+                const edges = this.data.edges
+                const simplifyEdges = this.data.simplifyEdges
 
                 // 拼接成作图的数据
                 this.graphData = {
@@ -113,25 +108,17 @@
                     simplifyEdges
                 }
 
-                //  非主线程的业务, 交给异步去执行
-                // setTimeout(() => {
-                //     this.createChart0({ nodes, edges })
-                // }, 1000)
                 // 主业务
                 this.createChart1({ nodes, edges: simplifyEdges }).then(graph => {
                     setTimeout(() => {
-                        loading.setText('图形计算中')
                     }, 1000)
                     setTimeout(() => {
-                        loading.setText('图形绘制中')
                     }, 3000)
                     setTimeout(() => {
-                        loading.setText('布局参数计算中')
                         this.graphReady = true
                         graph.fitView(20)
                     }, 4000)
                     setTimeout(() => {
-                        loading.close()
                         // graph.updateLayout({
                         //   gravity: 1
                         // })
@@ -152,8 +139,8 @@
                         if (!node.initScore) node.size = 40
                         if (node.initScore > 0 && node.initScore < 200) node.size = 60
                         if (node.initScore >= 200) node.size = 80
-                        // node.img = `${this.imageHost}${node.headPortrait}`
-                        node.img = `${this.imageHost}${node.headPortrait}?imgType=compressionSmall`
+                        // node.img = `${this.imageHost}${node.headPortrait}?imgType=compressionSmall`
+                        node.img = './1.jpg'
                         node.label = node.name
                         node.clipCfg = {
                             show: true,
@@ -214,6 +201,7 @@
                     result[key] ? result[key].push(index) : result[key] = [index]
                     return result
                 }, {})
+                console.log('multiSameDirectionEdges:', multiSameDirectionEdges)
                 return edges.map((edge, index) => {
                     edge.id = 'edge|' + index
                     // edge.label = edge.relationshipAbbreviation
@@ -233,9 +221,9 @@
             createChart1(data) {
                 return new Promise(resolve => {
                     // if (this.graph[this.graphType].graph) return
-
                     // 初始化
                     const ref = this.$refs['canvas']
+                    console.log(ref.clientWidth)
                     const graph = new G6.Graph({
                         container: ref,
                         width: ref.clientWidth,
@@ -303,8 +291,12 @@
 <style lang="less" scoped>
     .container {
         width: 100%;
-        height: 100%;
-        background-color: aqua;
-        padding: 0;
+        height: calc(100vh - 130px);
+        background-color: #ffffff;
+
+        .canvas {
+            height: 100%;
+            background-color: darkblue;
+        }
     }
 </style>
