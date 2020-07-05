@@ -65,6 +65,7 @@ export const routes = [
                 redirect: '/study/javascript/console',
                 children: [
                     { path: '/study/javascript/console', name: 'console', meta: {title: 'console'}, component: () => import('@/views/Study/Javascript/Console.vue') },
+                    { path: '/study/javascript/worker', name: 'worker', meta: {title: 'worker'}, component: () => import('@/views/Study/Javascript/Worker.vue') },
                 ],
             },
             {

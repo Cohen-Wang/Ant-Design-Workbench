@@ -7,11 +7,15 @@ import 'ant-design-vue/dist/antd.css';
 import router from './router'
 import store from './store'
 import axios from 'axios'
+import VueWorker from 'vue-worker'
 
 Vue.config.productionTip = false;
 
 // 调用 ant-design框架
 Vue.use(Antd);
+
+// 调用Vue-Worker
+Vue.use(VueWorker)
 
 /**
  * axios并没有install 方法，所以是不能使用vue.use()方法的。
