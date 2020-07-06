@@ -58,6 +58,16 @@ export const routes = [
                 ],
             },
             {
+                path: '/study/less',
+                name: 'less',
+                component: () => import('@/views/Study/Less/Index.vue'),
+                meta: {title: 'Less', icon: 'bulb'},
+                redirect: '/study/less/loop',
+                children: [
+                    { path: '/study/less/loop', name: 'loop', meta: {title: 'loop(循环)'}, component: () => import('@/views/Study/Less/Loop.vue') },
+                ],
+            },
+            {
                 path: '/study/javascript',
                 name: 'javascript',
                 component: () => import('@/views/Study/Javascript/Index.vue'),

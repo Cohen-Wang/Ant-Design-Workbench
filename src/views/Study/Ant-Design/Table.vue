@@ -24,6 +24,7 @@
     </div>
 </template>
 <script>
+
     const columns = [
         {
             dataIndex: 'name',
@@ -79,13 +80,14 @@
     ];
 
     export default {
+        name: 'Table',
         data() {
             return {
                 data,
                 columns,
-            };
-        },
-    };
+            }
+        }
+    }
 </script>
 
 <style scoped>

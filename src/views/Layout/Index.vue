@@ -1,5 +1,5 @@
 <template>
-    <div class="flex">
+    <div class="d-flex">
         <!-- 左侧 -->
         <div class="w-240">
             <div class="logo">
@@ -11,7 +11,7 @@
             <layout-sidebar/>
         </div>
         <!-- 右侧 -->
-        <div class="flex-1 bg-orange">
+        <div class="flex-1">
             <LayoutContent>
                 <NavHeader slot="top"></NavHeader>
                 <router-view slot="content"></router-view>

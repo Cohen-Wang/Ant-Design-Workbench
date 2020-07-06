@@ -15,6 +15,75 @@
 
 
 
+/* Less 循环出常用类名 */
+// @0px:0px; // 使用px单位时有个坑，必须采用+的方式，不然编译的不对
+@list:
+    2, 4, 5, 6, 8,
+    10, 12, 14, 16, 18,
+    20, 24,
+    30,
+    40, 48,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100,
+    200, 240;
+
+.loop(@list);
+.loop(@list, @i: 1, @val: extract(@list, @i)) when (length(@list) >= @i) {
+
+  /* margin */
+  .mt-@{val} { margin-top: @val + 0px; }
+  .mr-@{val} { margin-right: @val + 0px; }
+  .mb-@{val} { margin-bottom: @val + 0px; }
+  .ml-@{val} { margin-left: @val + 0px; }
+
+  /* padding */
+  .pt-@{val} { padding-top: @val + 0px; }
+  .pr-@{val} { padding-right: @val + 0px; }
+  .pb-@{val} { padding-bottom: @val + 0px; }
+  .pl-@{val} { padding-left: @val + 0px; }
+
+  /* width */
+  .w-@{val} { width: @val + 0px; }
+  .w-p-@{val} { width: @val * 100% / 100 }
+
+  /* height */
+  .h-@{val} { height: @val + 0px; }
+  .h-p-@{val} { width: @val * 100% / 100 }
+
+  .loop(@list, (@i + 1));
+}
+
+/* 颜色 */
+@color-list:
+        red, pink,
+        green, greenyellow,
+        yellow, yellowgreen,
+        blue,
+        orange,
+        white, lightgray, darkgray,
+        black;
+.loop-color(@color-list);
+.loop-color(@list, @i: 1, @val: extract(@list, @i)) when (length(@list) >= @i) {
+  /* 背景 */
+  .bg-@{val} { background-color: @val; }
+
+  /* 字体 */
+  .font-@{val} { background-color: @val; }
+
+  .loop-color(@list, (@i + 1));
+}
+
+/* 混合 */
+.radius(@radius) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
 
 /* 修改浏览器滚动条 */
 ::-webkit-scrollbar {
@@ -39,25 +108,16 @@
 }
 
 /* 布局 */
-.flex {
-  display: flex;
-}
+.d-flex { display: flex; }
 
-.w-240 {
-  width: 240px;
-}
+.flex-group-0 { flex-grow: 0; }
+.flex-1 { flex: 1; }
 
-.flex-1 {
-  flex: 1;
-}
 
-.bg-yellow {
-  background-color: yellow;
-}
 
-.bg-orange {
-  background-color: orange;
-}
+
+
+
 
 
 
